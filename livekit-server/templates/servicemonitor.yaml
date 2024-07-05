@@ -3,6 +3,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{ include "livekit-server.serviceMonitorName" . }}
+  namespace: {{ .Release.Namespace | quote }}
   labels:
     {{- include "livekit-server.labels" . | nindent 4 }}
   {{- with .Values.serviceMonitor.annotations }}
